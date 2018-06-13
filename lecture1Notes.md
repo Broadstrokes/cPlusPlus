@@ -1,4 +1,4 @@
-# Lecture 1
+# Lesson 1
 
 ## Intro
 
@@ -96,18 +96,21 @@ init main()
 	// STEP 1: Get info from user
 	// declare variables 
 	int hoursWorked;
+	int hourlyRate;
 	int paycheckAmount;
 
 	cout << "Please enter the number of hours worked: ";
 	cin >> hoursWorked  // wait for user to type in value and put that value into the variable hoursWorked
 	
+	cout << "Please enter rate per hour: ";
+	cin >> hourlyRate;
 	// Step 2: Calculate
 	// ASSIGNMENT OPERATOR = 
-	paycheckAmount = hoursWorked * 12;
+	paycheckAmount = hoursWorked * hourlyRate;
 	
 	// Step 3: Display amount to user
-	cout << "The amout of the paycheck is $"
-				<< paycheckAmount << endl;
+	cout << "The amout of the paycheck is "
+				<< paycheckAmount << "dollars." << endl;
 
 }
 
