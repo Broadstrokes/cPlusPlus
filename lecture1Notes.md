@@ -38,7 +38,7 @@ int main()
 	#include <iostream>
 	using namespace std;
 
-	init main() 
+	int main() 
 	{
 		cout << "Hi" << endl;
 		cout << "How are you?" << endl;
@@ -56,7 +56,7 @@ int main()
 #include <iostream>
 using namespace std;
 
-init main() 
+int main() 
 {
 	cout << "Hi" << endl 
 	<< "How are you?" << endl;
@@ -68,7 +68,7 @@ init main()
 #include <iostream>
 using namespace std;
 
-init main() 
+int main() 
 {
 	cout << "Hi" << endl 
 	<< "Bob said, \"How are you?\"" << endl;
@@ -91,7 +91,7 @@ init main()
 #include <iostream>
 using namespace std;
 
-init main() 
+int main() 
 {
 	// STEP 1: Get info from user
 	// declare variables 
