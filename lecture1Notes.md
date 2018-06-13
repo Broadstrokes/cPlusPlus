@@ -100,7 +100,7 @@ int main()
 	int paycheckAmount;
 
 	cout << "Please enter the number of hours worked: ";
-	cin >> hoursWorked  // wait for user to type in value and put that value into the variable hoursWorked
+	cin >> hoursWorked;  // wait for user to type in value and put that value into the variable hoursWorked
 	
 	cout << "Please enter rate per hour: ";
 	cin >> hourlyRate;
@@ -110,7 +110,7 @@ int main()
 	
 	// Step 3: Display amount to user
 	cout << "The amout of the paycheck is "
-				<< paycheckAmount << "dollars." << endl;
+				<< paycheckAmount << " dollars." << endl;
 
 }
 
