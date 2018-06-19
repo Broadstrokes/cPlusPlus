@@ -37,7 +37,7 @@ using namespace std;
 
 int getMidpoint(int low, int high);
 void playOneGame();
-void getUserResponseToGuess(int guess, char& result);
+void getUserResponseToGuess(int guess, char &result);
 
 const string RESTART_GAME_MESSAGE = "Great! Do you want to play again (y/n)? ";
 const string GAME_GREETING_MESSAGE = "Ready to play (y/n)? ";
@@ -60,10 +60,17 @@ int main() {
 
 
 
-void getUserResponseToGuess(int guess, char& result) {
+
+
+
+void getUserResponseToGuess(int guess, char &result) {
     cout << "Is it "<< guess << " (h/l/c)? ";
     cin >> result;
 }
+
+
+
+
 
 
 void playOneGame() {
@@ -78,7 +85,6 @@ void playOneGame() {
     getUserResponseToGuess(mid, result);
     
     while (result != 'c') {
-        cout << "RESULT: " << result << endl;
         if (result == 'h') {
             low = mid + 1;
         } else if (result == 'l') {
@@ -107,29 +113,17 @@ int getMidpoint(int low, int high) {
 
 /*
  Ready to play (y/n)? y
- Think of a number between 1 and 100.Is it 51 (h/l/c)? h
- Is it 76 (h/l/c)? h
- Is it 89 (h/l/c)? h
- Is it 95 (h/l/c)? h
- Is it 98 (h/l/c)? h
- Is it 100 (h/l/c)? c
+ Think of a number between 1 and 100.
+ Is it 50 (h/l/c)? h
+ Is it 75 (h/l/c)? h
+ Is it 88 (h/l/c)? l
+ Is it 81 (h/l/c)? h
+ Is it 84 (h/l/c)? h
+ Is it 86 (h/l/c)? l
+ Is it 85 (h/l/c)? c
  Great! Do you want to play again (y/n)? y
- Think of a number between 1 and 100.Is it 51 (h/l/c)? l
- Is it 25 (h/l/c)? l
- Is it 12 (h/l/c)? l
- Is it 6 (h/l/c)? l
- Is it 3 (h/l/c)? l
- Is it 1 (h/l/c)? c
- Great! Do you want to play again (y/n)? y
- Think of a number between 1 and 100.Is it 51 (h/l/c)? h
- Is it 76 (h/l/c)? h
- Is it 89 (h/l/c)? h
- Is it 95 (h/l/c)? l
- Is it 92 (h/l/c)? l
- Is it 90 (h/l/c)? h
- Is it 91 (h/l/c)? c
- Great! Do you want to play again (y/n)? y
- Think of a number between 1 and 100.Is it 51 (h/l/c)? l
+ Think of a number between 1 and 100.
+ Is it 50 (h/l/c)? l
  Is it 25 (h/l/c)? l
  Is it 12 (h/l/c)? h
  Is it 18 (h/l/c)? h
