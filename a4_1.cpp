@@ -3,9 +3,7 @@
 //
 //  Created by Dan Sajjad on 6/21/18.
 //  Copyright © 2018 Dan Sajjad. All rights reserved.
-//  Class: CS110B - Programming Fundamentals C++
-//  Teacher: Dave Harden
-//
+
 
 /*
      The program reads five cards from the user,
