@@ -1,6 +1,7 @@
-#
-include < iostream > #include < cctype > #include < cstring >
-  using namespace std;
+#include <iostream>
+#include <cctype>
+#include <cstring>
+using namespace std;
 
 /*
   strlen()
@@ -95,40 +96,77 @@ Now that ptr and array2 are the same thing, we can use them interchangeably.
 
 */
 
-int lastIndexOf(const char * inString, char target);
-void reverse(char * inString);
-int replace(char * inString, char target, char replacementChar);
+int lastIndexOf(const char* inString, char target);
+void reverse(char* inString);
+int replace(char* inString, char target, char replacementChar);
+bool isPalindrome(const char* inString);
+void toupper(char* inString);
+int numLetters(const char* inString);
+
 
 int main() {
-  const int SIZE = 51;
-  char userString[SIZE];
-  char letter = 'x';
-  char answer;
+    char str1[15] = "Hello World";
+    char str2[15] = "C++ is fun!";
+    char str3[6] = "apple";
+    char str4[5] = "baby";
+    char str5[7] = "hannah"; // true
+    char str6[8] = "abc cba"; // true
+    char str7[8] = "aBba"; // true
+    char str8[8] = "abc ba"; //false
+    char str9[8] = "racecar"; //true
+    char str10[15] = "raceecar"; //true
+    char str11[15] = "raceeecar"; //true
+    char str12[15] = "racedecar"; //true
+    char str13[15] = "race decar"; //true
+    char str14[5] = ""; //true
 
-  char str1[15] = "Hello World";
-  char str2[15] = "C++ is fun!";
-  char str3[6] = "apple";
-  char str4[5] = "baby";
-  // Get a string from the user;
+    cout << "======== TEST lastIndexOf =======" << endl;
+    cout << lastIndexOf(str1, 'l') << endl; // 9
+    cout << lastIndexOf(str5, 'n') << endl; // 3
+    cout << lastIndexOf(str5, 'h') << endl; // 5
 
 
-  // do {
-  // cin.clear();
-  // cout << "Enter a string (up to 50 characters)";
-  // cin.getline(userString, SIZE);
-  // cout << "Enter target" << endl;
-  // cin.get(letter);
-  // cout << lastIndexOf(userString, letter) << endl;
-  // cout << str1;
-  // cout << "=========reversing=======" << endl;
-  reverse(str1);
-  reverse(str2);
-  reverse(str3);
-  reverse(str4);
-  // cin.ignore();
-  // cout << "Play again? "; 
-  // cin.get(answer);
-  // } while (answer == 'y');
+    cout << "======== TEST reverse =======" << endl;
+    reverse(str1);
+    reverse(str2);
+    reverse(str3);
+    reverse(str4);
+
+    cout << "======== TEST replace =======" << endl;
+    cout << replace(str1, 'l', 'k') << endl;
+    cout << replace(str2, 'm', 'p') << endl;
+    cout << replace(str3, 'a', 'b') << endl;
+    cout << replace(str4, 'b', 'd') << endl;
+
+    cout << "======== TEST isPalindrome =======" << endl;
+    cout << isPalindrome(str5) << endl;
+    cout << isPalindrome(str6) << endl;
+    cout << isPalindrome(str7) << endl;
+    cout << isPalindrome(str8) << endl;
+    cout << isPalindrome(str9) << endl;
+    cout << isPalindrome(str10) << endl;
+    cout << isPalindrome(str11) << endl;
+    cout << isPalindrome(str12) << endl;    
+    cout << isPalindrome(str13) << endl;
+    
+    cout << "======== TEST toupper =======" << endl;
+    toupper(str5);
+    toupper(str6);
+    toupper(str7);
+    toupper(str8);
+    toupper(str9);
+
+    cout << "======== TEST numLetters =======" << endl;
+    cout << numLetters(str5) << endl;
+    cout << numLetters(str6) << endl;
+    cout << numLetters(str7) << endl;
+    cout << numLetters(str8) << endl;
+    cout << numLetters(str9) << endl;
+    cout << numLetters(str10) << endl;
+    cout << numLetters(str11) << endl;
+    cout << numLetters(str12) << endl;    
+    cout << numLetters(str13) << endl;
+    cout << numLetters(str14) << endl;
 }
 
 
@@ -140,45 +178,103 @@ int main() {
 //****************************************************************
 
 /*
-  This function finds the last index where the target char can be found in the string. it returns -1 if the target char does not appear in the string. The function should be case sensitive (so 'b' is not a match for 'B').
+    This function finds the last index where the target char can be found in the string. it returns -1 if the target char does not appear in the string. The function should be case sensitive (so 'b' is not a match for 'B').
 */
-int lastIndexOf(const char * inString, char target) {
-  int index = strlen(inString);
+int lastIndexOf(const char* inString, char target) {
+    int index = strlen(inString);
 
-  while (index >= 0) {
-    if (inString[index] == target) {
-      return index;
-    }
-    index--;
-  }
-  return -1;
+    while (index >= 0) {
+        if (inString[index] == target) {
+            return index;
+        }
+        index--;    
+    }  
+    return -1;
 }
 
 /*
   This function alters any string that is passed in. It should reverse the string. If "flower" gets passed in it should be reversed in place to "rewolf". For efficiency, this must be done "in place", i.e., without creating a second array.
 */
-void reverse(char * inString) {
-  char temp;
-  int i = 0;
-  int j = strlen(inString) - 1;
+void reverse(char* inString) {
+    char temp;
+    int i = 0; 
+    int j = strlen(inString) - 1;
 
-  while (i < j) {
-    temp = inString[i];
-    inString[i] = inString[j];
-    inString[j] = temp;
+    while (i < j) {
+        temp = inString[i];
+        inString[i] = inString[j];
+        inString[j] = temp;
 
-    i++;
-    j--;
-  }
+        i++;
+        j--;
+    }
 
-  cout << "REVERSED ====== " << endl;
-  cout << inString << endl;
+    cout << inString << endl;  // For testing purposes
 }
 
 /*
   This function finds all instances of the char 'target' in the string and replace them with 'replacementChar'. It returns the number of replacements that it makes. If the target char does not appear in the string it should return 0.
 */
 
-int replace(char * inString, char target, char replacementChar) {
+int replace(char* inString, char target, char replacementChar) {
+    int index = strlen(inString);
+    int count = 0;
 
+    while (index >= 0) {
+        if (inString[index] == target) {
+            inString[index] = replacementChar;
+            count++;
+        }
+        index--;
+    }
+
+    return count;
+}
+
+/*
+This function returns true if the argument string is a palindrome. It returns false if it is no. A palindrome is a string that is spelled the same as its reverse. For example "abba" is a palindrome. So are "hannah" and "abc cba".
+*/
+bool isPalindrome(const char* inString) {
+    char temp;
+    int i = 0; 
+    int j = strlen(inString) - 1;
+
+    while (i < j) {
+        if (toupper(inString[i]) != toupper(inString[j])) {
+            return false;
+        }
+        i++;
+        j--;
+    }
+    return true;
+}
+/*
+    This function converts the c-string parameter to all uppercase.
+*/
+void toupper(char* inString) {
+    int stringLength = strlen(inString);
+    int count = 0;
+
+    while (count < stringLength) {
+        inString[count] = toupper(inString[count]);
+        count++;
+    }
+    cout << inString << endl;
+}
+/*
+    This function returns the number of letters in the c-string.
+*/
+int numLetters(const char* inString) {
+    int stringLength = strlen(inString);
+    int count = 0;
+    int letterCount = 0;
+
+    while (count < stringLength) {
+        if (isalpha(inString[count])) {
+            letterCount++;
+        }
+        count++;
+    }
+
+    return letterCount;
 }
