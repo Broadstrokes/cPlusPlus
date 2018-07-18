@@ -4,8 +4,6 @@
 //
 //  Created by Dan Sajjad on 7/14/18.
 //  Copyright © 2018 Dan Sajjad. All rights reserved.
-//  Class: CS110B - Programming Fundamentals C++
-//  Teacher: Dave Harden
 
 #include "mystring.h"
 #include <iostream>
