@@ -1,14 +1,18 @@
 #include <iostream>
 #include <cassert>
 #include <string>
+#include <ctime>
+#include <cstdlib>
 using namespace std;
 
 
-const string Creatures[4] = { "Human", "Cyberdemon", "Balrog", "Elf" };
+// const string Creatures[4] = { "Human", "Cyberdemon", "Balrog", "Elf" };
 
 
 class Creature {
     public:
+        // ENUM TYPE
+        const string Creatures[4] = { "Human", "Cyberdemon", "Balrog", "Elf" };
         Creature();
         Creature(int newStrength, int newHitpoints);
         int getHitpoints() const { return hitpoints; }
@@ -159,72 +163,57 @@ Cyberdemon::Cyberdemon() { }
 Cyberdemon::Cyberdemon(int strength, int hp) : Demon(strength, hp) { }
 
 
+//////////
+// MAIN //
+//////////
 
+void battleArena(Creature &Creature1, Creature& Creature2);
 
 int main() {
-    cout << "Hello " << endl;
-
     srand(static_cast<unsigned>(time(0)));
 
-    Elf e1;
-    Elf e(40, 50);
+    Elf e(50,50);
+    Balrog b(50,50);;
 
-    Human h1;
-    Human h(20, 30);
-
-    Cyberdemon c1;
-    Cyberdemon c(60, 70);
-
-    Balrog b1;
-    Balrog b(80, 90);
+    battleArena(e, b);
 
 
+    Human h(50,400);
+    Cyberdemon b1(10,500);;
 
-    cout << "default Human strength/hitpoints: " << h1.getStrength() << "/" << h1.getHitpoints() << endl;
-    cout << "default Elf strength/hitpoints: " << e1.getStrength() << "/" << e1.getHitpoints() << endl;
-    cout << "default Cyberdemon strength/hitpoints: " << c1.getStrength() << "/" << c1.getHitpoints() << endl;
-    cout << "default Balrog strength/hitpoints: " << b1.getStrength() << "/" << b1.getHitpoints() << endl;
-    cout << "non-default Human strength/hitpoints: " << h.getStrength() << "/" << h.getHitpoints() << endl;
-    cout << "non-default Elf strength/hitpoints: " << e.getStrength() << "/" << e.getHitpoints() << endl;
-    cout << "non-default Cyberdemon strength/hitpoints: " << c.getStrength() << "/" << c.getHitpoints() << endl;
-    cout << "non-default Balrog strength/hitpoints: " << b.getStrength() << "/" << b.getHitpoints() << endl;
-    cout << endl << endl;
+    battleArena(h, b1);
 
-    cout << "Examples of " << h.getSpecies() << " damage: " << endl;
-    for (int i = 0; i < 10; i++){
-       int damage = h.getDamage();
-       cout << " Total damage = " << damage << endl;
-       cout << endl;
-    }
-    cout << endl;
+}
 
 
+void battleArena(Creature& Creature1, Creature& Creature2) {
+    string result = " ", winner;
 
-    cout << "Examples of " << e.getSpecies() << " damage: " << endl;
-    for (int i = 0; i < 10; i++){
-        int damage = e.getDamage();
-        cout << " Total damage = " << damage << endl;
+    while (result == " ") {
+        // calculate the damage done by Creature1
+        // subtract that amount from Creature2's hitpoints
+        Creature2.setHitpoints(Creature2.getHitpoints() - Creature1.getDamage());
+        // calculate the damage done by Creature2
+        // subtract that amount from Creature1's hitpoints
+        Creature1.setHitpoints(Creature1.getHitpoints() - Creature2.getDamage());
+        
+        // remaining hps
+        int creature1HP = Creature1.getHitpoints();
+        int creature2HP = Creature2.getHitpoints();
+
+        if (creature1HP == 0 && creature2HP == 0) {
+            result = "tie";
+            cout << result << endl;
+        } else if (creature1HP <= 0 || creature2HP <= 0) {
+            result = "game over";
+            cout << result << endl;
+            winner = creature1HP < creature2HP ? Creature2.getSpecies() : Creature1.getSpecies();
+            cout <<  winner << " won";
+        } else {
+            cout << "Another round" << endl;
+            cout << "HP 1: " << creature1HP << " | HP 2: " << creature2HP << endl;
+        }
+        cout << endl;
         cout << endl;
     }
-    cout << endl;
-
-
-
-    cout << "Examples of " << c.getSpecies() << " damage: " << endl;
-    for (int i = 0; i < 10; i++){
-       int damage = c.getDamage();
-       cout << " Total damage = " << damage << endl;
-       cout << endl;
-    }
-    cout << endl;
-
-
-
-    cout << "Examples of " << b.getSpecies() << " damage: " << endl;
-    for (int i = 0; i < 10; i++){
-       int damage = b.getDamage();
-       cout << " Total damage = " << damage << endl;
-       cout << endl;
-    }
-    cout << endl;
 }
