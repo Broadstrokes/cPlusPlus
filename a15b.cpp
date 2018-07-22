@@ -16,7 +16,7 @@ class Creature {
         void setHitpoints(int hp) {  hitpoints = hp; }
         void setStrength(int strength) { strength = strength; }
         virtual string getSpecies() const = 0;
-        int getDamage() const;
+        virtual int getDamage() const;
     private:
         int strength;           // how much damage this Creature inflicts
         int hitpoints;          // how much damage this Creature can sustain
