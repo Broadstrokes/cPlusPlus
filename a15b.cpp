@@ -15,7 +15,7 @@ class Creature {
         int getStrength() const { return strength; }
         void setHitpoints(int hp) {  hitpoints = hp; }
         void setStrength(int strength) { strength = strength; }
-        string getSpecies() const { return Creatures[0]; }
+        virtual string getSpecies() const { return Creatures[0]; }
         int getDamage() const;
     private:
         int strength;           // how much damage this Creature inflicts
@@ -46,6 +46,9 @@ Creature::Creature(int str, int hp) {
 int Creature::getDamage() const {
    int damage;
    damage = (rand( ) % strength) + 1;
+
+   cout << "The " << getSpecies() << " attacks for " << damage << " points!" << endl;
+   
    return damage;
 }
 
@@ -68,7 +71,6 @@ Human::Human(int strength, int hp) : Creature(strength, hp) { }
 
 int Human::getDamage() const {
     int damage = Creature::getDamage();
-    cout << "The " << getSpecies() << " attacks for " << damage << " points!" << endl;
     return damage;
 }
 
@@ -89,7 +91,6 @@ Elf::Elf(int strength, int hp) : Creature(strength, hp) { }
 
 int Elf::getDamage() const {
     int damage = Creature::getDamage();
-    cout << "The " << getSpecies() << " attacks for " << damage << " points!" << endl;
 
     // Elves inflict double magical damage with a 50% chance
     if ((rand() % 2) == 0) {
@@ -118,7 +119,6 @@ Demon::Demon(int strength, int hp) : Creature(strength, hp) { }
 
 int Demon::getDamage() const {
     int damage = Creature::getDamage();
-    cout << " attacks for " << damage << " points" << endl;
 
     if (rand() % 4 == 0) {
         damage = damage + 50;
@@ -144,7 +144,6 @@ Balrog::Balrog(int strength, int hp) : Demon(strength, hp) { }
 
 int Balrog::getDamage() const {
     int damage, damage2;
-    cout << "The " << getSpecies();
     
     damage = Demon::getDamage();
 
@@ -169,8 +168,6 @@ Cyberdemon::Cyberdemon(int strength, int hp) : Demon(strength, hp) { }
 
 
 int Cyberdemon::getDamage() const {
-    cout << "The " << getSpecies();
-
     int damage = Demon::getDamage();
 
     return damage;
