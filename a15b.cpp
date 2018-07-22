@@ -62,17 +62,10 @@ class Human: public Creature {
         Human();
         Human(int strength, int hp);
         string getSpecies() const { return Creatures[0]; }
-        int getDamage() const;
 };
 
 Human::Human() { }
 Human::Human(int strength, int hp) : Creature(strength, hp) { }
-
-
-int Human::getDamage() const {
-    int damage = Creature::getDamage();
-    return damage;
-}
 
 
 /////////
@@ -160,18 +153,10 @@ class Cyberdemon: public Demon {
         Cyberdemon();
         Cyberdemon(int strength, int hp);
         string getSpecies() const { return Creatures[1]; }
-        int getDamage() const;
 };
 
 Cyberdemon::Cyberdemon() { }
 Cyberdemon::Cyberdemon(int strength, int hp) : Demon(strength, hp) { }
-
-
-int Cyberdemon::getDamage() const {
-    int damage = Demon::getDamage();
-
-    return damage;
-}
 
 
 
