@@ -6,20 +6,23 @@ using namespace std;
 
 
 int findSmallest(const int list[], int numItems);
-
+void printVertical(int num);
 
 int main() {
-	cout << "Hello world" << endl;
 
 	int numbers[5] = {10, 1, 3, 4, 5};
 
-	// for (int i = 0; i < 5; i++) {
-	// 	cout << numbers[i] << endl; 
-	// };
-
 	cout << findSmallest(numbers, 5) << endl;
+
+
+	printVertical(9746);
+
 }
 
+
+		///////////////////
+		// FIND SMALLEST //
+		///////////////////
 
 /**
  * Return the smallest item in the list
@@ -75,3 +78,28 @@ int findSmallest(const int list[], int numItems) {
 
 // 	return smallest;
 // }
+
+
+		/////////////////////
+		// PRINT VERTICAL  //
+		/////////////////////
+
+
+/**
+ * Take a single integer argument and write the integer vertically, one digit per line. 
+ * We will assume that the arguement is non-negative. Eg: int = 9746, output:
+ * 9
+ * 7
+ * 4
+ * 6
+ * @param num integer
+ */
+void printVertical(int num) {
+	if (num < 10) {
+		cout << num << endl;
+	} else {
+		printVertical(num/10);
+		cout << num % 10 << endl;
+	}
+}
+
